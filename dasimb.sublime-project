@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"build_systems": [
+		{
+			"name": "Run dasimb",
+			"working_dir": "$project_path/build",
+			"shell_cmd": "make && dasimb"
+		}
+	]
+}
