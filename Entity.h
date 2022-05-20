@@ -1,13 +1,14 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "SEntityBase.h"
+#include "EntityBase.h"
+#include "Stateful.h"
 
 enum class State { INITIATOR, IDLE, OK };
 
-class Entity : public SEntityBase<State> {
+class Entity : public EntityBase, public Stateful<State> {
 public:
-	Entity(ID id) : SEntityBase<State>{id,State::IDLE} {}
+	Entity(ID id) : EntityBase{id}, Stateful{State::IDLE} {}
 	void spontaneously() override;
 	void receiving(EntityBase* origin, const Message& m) override;
 	void when() override;

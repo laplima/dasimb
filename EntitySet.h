@@ -22,23 +22,6 @@ using Neighborhood = std::set<EntityBasePtr>;
 class EntitySet {
 public:
 
-	// iterator class
-	class iterator {
-		friend class EntitySet;
-	private:
-		explicit iterator(typename Neighborhood::iterator i) : it(i) {}
-	public:
-		iterator& operator++() { ++it; return *this; }
-		iterator operator++(int) { it++; return *this; }
-		bool operator==(const iterator& i) const { return (i.it == it); }
-		bool operator!=(const iterator& i) const { return (i.it != it); }
-		EntityBase* operator*() const { return *it; }
-	private:
-		typename Neighborhood::iterator it;
-	};
-
-public:
-
 	EntitySet() = default;
 	EntitySet(const EntitySet& es);
 	EntitySet(std::initializer_list<EntityBasePtr> lst);
@@ -48,10 +31,11 @@ public:
 	[[nodiscard]] size_t count(EntityBasePtr e) const;
 	[[nodiscard]] bool contains(EntityBasePtr e) const;
 	[[nodiscard]] bool empty() const;
-	iterator begin();
-	[[nodiscard]] iterator begin() const;
-	iterator end();
-	[[nodiscard]] iterator end() const;
+
+	auto begin() { return nset.begin(); }
+	[[nodiscard]] auto begin() const { return nset.begin(); }
+	auto end() { return nset.end(); }
+	[[nodiscard]] auto end() const { return nset.end(); }
 
 	// operators
 	EntitySet& operator<<(const EntityBasePtr t);	// insert

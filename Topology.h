@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <vector>
+#include <filesystem>
 #include "Entity.h"
 
 class Topology {
 public:
-	Topology(int n, int k, float p = 0.0);
+	explicit Topology(const std::filesystem::path& arq); // topolofy from file
+	Topology(int n, int k, float p = 0.0);		// random small world topology
 	Entity* operator[](int id);
 	[[nodiscard]] int size() const { return static_cast<int>(ents.size()); }
 

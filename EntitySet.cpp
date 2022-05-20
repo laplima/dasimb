@@ -41,27 +41,6 @@ bool EntitySet::empty() const
 {
 	return (size() == 0);
 }
-
-EntitySet::iterator EntitySet::begin()
-{
-	return iterator{ nset.begin() };
-}
-
-EntitySet::iterator EntitySet::begin() const
-{
-	return iterator{ nset.begin() };
-}
-
-EntitySet::iterator EntitySet::end()
-{
-	return iterator{ nset.end()};
-}
-
-EntitySet::iterator EntitySet::end() const
-{
-	return iterator{ nset.end()};
-}
-
 // insert
 EntitySet& EntitySet::operator<<(const EntityBasePtr t)
 {

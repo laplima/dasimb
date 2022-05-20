@@ -20,10 +20,10 @@ bool EntityBase::is_neighbor(EntityBase* e) const
 
 EntityBase* EntityBase::neighbor(ID id) const
 {
-	auto n = std::find_if(std::begin(neighbors_),
-		std::end(neighbors_),
-		[id](const EntityBase* eb) { return eb->id() == id; });
-	return (n == neighbors_.end()) ? nullptr : *n;
+	auto p = std::find_if(std::begin(neighbors_), std::end(neighbors_),
+		[id](const EntityBasePtr eb) { return id == eb->id(); });
+
+	return (p == neighbors_.end() ? nullptr : *p);
 }
 
 Message EntityBase::next_msg()
