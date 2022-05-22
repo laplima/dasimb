@@ -3,15 +3,15 @@
 // adds custom state (+ operation) to EntityBase
 //
 
-#ifndef STATEFULENTITYBASE_H
-#define STATEFULENTITYBASE_H
+#ifndef STATEFULENTITY_H
+#define STATEFULENTITY_H
 
 #include "EntityBase.h"
 
 template<typename State>
-class SEntityBase : public EntityBase {
+class StatefulEntity : public EntityBase {
 public:
-	SEntityBase(ID id, State s) : EntityBase{id}, state_{s} {}
+	StatefulEntity(ID id, State s) : EntityBase{id}, state_{s} {}
 	State state() const { return state_; }
 protected:
 	void become(State new_state) { state_ = new_state; }

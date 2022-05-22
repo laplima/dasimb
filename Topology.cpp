@@ -66,7 +66,7 @@ void Topology::small_world(int k, float p)
 std::ostream& operator<<(std::ostream& os, const Topology& t)
 {
 	for (const auto& e : t.ents)
-		for (const auto* n : e.N())
+		for (const auto* n : e.Nx())
 			os << e.id() << " <-> " << n->id() << std::endl;
 	return os;
 }

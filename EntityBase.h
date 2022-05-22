@@ -18,7 +18,7 @@ public:
 	void add_neighbor(EntityBase* e);
 	[[nodiscard]] bool is_neighbor(EntityBase* e) const;
 	[[nodiscard]] EntityBase* neighbor(ID id) const;
-	[[nodiscard]] const EntitySet& N() const { return neighbors_; }
+	[[nodiscard]] const EntitySet& Nx() const { return neighbors_; }
 public:
 	// user defined events
 	virtual void spontaneously() = 0;

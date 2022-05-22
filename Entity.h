@@ -2,16 +2,23 @@
 #define ENTITY_H
 
 #include "EntityBase.h"
-#include "Stateful.h"
+#include "EntitySet.h"
+// #include "Stateful.h"
+#include "StatefulEntity.h"
 
-enum class State { INITIATOR, IDLE, OK };
+enum class State { INITIATOR, IDLE, VISITED, OK };
 
-class Entity : public EntityBase, public Stateful<State> {
+class Entity : public StatefulEntity<State> {
 public:
-	Entity(ID id) : EntityBase{id}, Stateful{State::IDLE} {}
+	explicit Entity(ID id);
 	void spontaneously() override;
 	void receiving(EntityBase* origin, const Message& m) override;
 	void when() override;
+protected:
+	void visits();
+	EntitySet unvisited;
+	bool initiator = false;
+	EntityBasePtr entry = nullptr;
 };
 
 #endif
